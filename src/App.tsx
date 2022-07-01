@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { ChakraProvider } from '@chakra-ui/react'
+import { queryClient } from 'lib/react-query'
+import MovieList from 'features/MovieList/components/MovieList/MovieList'
+import { MovieDetail } from 'features'
+import { Header } from 'components'
+import { MainContainerUI } from 'styles'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ChakraProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Header />
+          <MainContainerUI>
+            <Routes>
+              <Route path="/" element={<MovieList />} />
+              <Route path="/movie/:movieId" element={<MovieDetail />} />
+            </Routes>
+          </MainContainerUI>
+        </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
+    </ChakraProvider>
+  )
 }
-
-export default App;

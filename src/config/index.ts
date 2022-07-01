@@ -1,0 +1,8 @@
+export const BASE_API_URL = 'http://api.themoviedb.org/3/'
+export const TOP_RATED_MOVIES_RESOURCE: string = 'movie/top_rated/'
+export const SEARCH_MOVIES_RESOURCE = 'search/movie/'
+export const MOVIE_DETAILS_RESOURCE = '/movie/'
+export const IMAGE_URL = 'https://www.themoviedb.org/t/p/'
+export const IMAGE_SMALL = 'w220_and_h330_face'
+export const IMAGE_LARGE = 'w500'
+export const FILTERS_STORAGE_KEY = 'movie_filters'
